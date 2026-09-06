@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Happy Birthday ❤️</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- PROGRESS INDICATOR -->
+<div id="progress-bar" class="hidden">
+  <div class="progress-track">
+    <div class="progress-fill" id="progress-fill"></div>
+    <div class="progress-heart" id="progress-heart">❤️</div>
+  </div>
+  <div class="progress-stages">
+    <span>Начало</span>
+    <span>Время</span>
+    <span>Воспоминания</span>
+    <span>Квиз</span>
+    <span>...</span>
+    <span>💝</span>
+  </div>
+</div>
+
+<!-- SCREEN 1: INTRO -->
+<section id="screen-intro" class="screen active">
+  <div class="intro-bg">
+    <div class="floating-hearts" id="intro-hearts"></div>
+  </div>
+  <div class="intro-content">
+    <h1 class="intro-title">С Днём Рождения</h1>
+    <p class="intro-subtitle">Эта маленький подарунок ❤️</p>
+    <button class="btn-primary" id="btn-start">Начать ❤️</button>
+  </div>
+</section>
+
+<!-- SCREEN 2: TIMER -->
+<section id="screen-timer" class="screen">
+  <div class="screen-header">
+    <h2>Мы вместе уже... ГАААТ ДЭЭЭМ</h2>
+  </div>
+  <div class="timer-container">
+    <div class="timer-heart-big">❤️</div>
+    <div class="timer-grid">
+      <div class="timer-unit">
+        <span class="timer-num" id="t-years">0</span>
+        <span class="timer-label">лет</span>
+      </div>
+      <div class="timer-unit">
+        <span class="timer-num" id="t-months">0</span>
+        <span class="timer-label">месяцев</span>
+      </div>
+      <div class="timer-unit">
+        <span class="timer-num" id="t-days">0</span>
+        <span class="timer-label">дней</span>
+      </div>
+      <div class="timer-unit">
+        <span class="timer-num" id="t-hours">0</span>
+        <span class="timer-label">часов</span>
+      </div>
+      <div class="timer-unit">
+        <span class="timer-num" id="t-minutes">0</span>
+        <span class="timer-label">минут</span>
+      </div>
+      <div class="timer-unit">
+        <span class="timer-num" id="t-seconds">0</span>
+        <span class="timer-label">секунд</span>
+      </div>
+    </div>
+  </div>
+  <button class="btn-primary" id="btn-to-carousel">Наши воспоминания →</button>
+</section>
+
+<!-- SCREEN 3: CAROUSEL -->
+<section id="screen-carousel" class="screen">
+  <div class="screen-header">
+    <h2>Наши моменты</h2>
+  </div>
+  <div class="carousel-wrapper">
+    <div class="carousel-track" id="carousel-track">
+      <!-- Photos injected by JS -->
+    </div>
+    <button class="carousel-btn carousel-btn-prev" id="carousel-prev">‹</button>
+    <button class="carousel-btn carousel-btn-next" id="carousel-next">›</button>
+    <div class="carousel-dots" id="carousel-dots"></div>
+  </div>
+  <button class="btn-primary" id="btn-to-quiz">Маленький квиз →</button>
+</section>
+
+<!-- FULLSCREEN VIEWER -->
+<div id="fullscreen-viewer" class="hidden">
+  <div class="fs-overlay"></div>
+  <div class="fs-content">
+    <button class="fs-close" id="fs-close">✕</button>
+    <img class="fs-img" id="fs-img" src="" alt="">
+    <div class="fs-meta" id="fs-meta"></div>
+    <button class="fs-nav fs-prev" id="fs-prev">‹</button>
+    <button class="fs-nav fs-next" id="fs-next">›</button>
+  </div>
+</div>
+
+<!-- SCREEN 4: QUIZ -->
+<section id="screen-quiz" class="screen">
+  <div class="screen-header">
+    <h2>Маленький квиз</h2>
+  </div>
+  <div class="quiz-container">
+    <div class="quiz-progress-bar">
+      <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+    </div>
+    <div class="quiz-question-wrap" id="quiz-question-wrap">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+  <div class="quiz-feedback" id="quiz-feedback"></div>
+</section>
+
+<!-- SCREEN 6: FAKE ENDING -->
+<section id="screen-fake-end" class="screen">
+  <div class="fake-end-content">
+    <div class="thank-you-heart">❤️</div>
+    <div class="fake-end-divider"></div>
+    <p class="fake-end-note">Конец</p>
+    <button class="btn-ghost" id="btn-close-exp">Закрыть</button>
+  </div>
+</section>
+
+<!-- SCREEN 7: FINAL (hidden reveal) -->
+<section id="screen-final" class="screen">
+  <div id="confetti-container"></div>
+  <div class="final-content">
+    <div class="final-hb">Happy Birthday ❤️</div>
+    <div class="final-letter" id="final-letter"></div>
+    <div class="final-signature">С любовью ❤️</div>
+  </div>
+</section>
+
+<!-- QUIZ REACTION OVERLAY -->
+<div id="quiz-reaction" class="quiz-reaction hidden">
+  <div class="qr-card">
+    <div class="qr-gif-wrap">
+      <img class="qr-gif" id="qr-gif" src="" alt="">
+      <div class="qr-emoji" id="qr-emoji"></div>
+    </div>
+    <div class="qr-text" id="qr-text"></div>
+  </div>
+</div>
+
+<!-- BLACK OVERLAY for transition -->
+<div id="black-overlay"></div>
+
+<!-- AUDIO -->
+<audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>
